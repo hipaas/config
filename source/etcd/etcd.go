@@ -6,8 +6,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/coreos/etcd/mvcc/mvccpb"
 	"github.com/hipaas/config/source"
+	"go.etcd.io/etcd/api/v3/mvccpb"
 	cetcd "go.etcd.io/etcd/client/v3"
 )
 
@@ -40,7 +40,8 @@ func (c *etcd) Read() (*source.ChangeSet, error) {
 
 	kvs := make([]*mvccpb.KeyValue, 0, len(rsp.Kvs))
 	for _, v := range rsp.Kvs {
-		kvs = append(kvs, (*mvccpb.KeyValue)(v))
+		//fmt.Printf("%s : %s\n", v.Key, v.Value)
+		kvs = append(kvs, v)
 	}
 
 	data := makeMap(c.opts.Encoder, kvs, c.stripPrefix)
@@ -49,6 +50,7 @@ func (c *etcd) Read() (*source.ChangeSet, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error reading source: %v", err)
 	}
+	fmt.Printf("data %s\n", b)
 
 	cs := &source.ChangeSet{
 		Timestamp: time.Now(),

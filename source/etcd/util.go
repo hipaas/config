@@ -3,8 +3,8 @@ package etcd
 import (
 	"strings"
 
-	"github.com/coreos/etcd/mvcc/mvccpb"
 	"github.com/hipaas/config/encoder"
+	"go.etcd.io/etcd/api/v3/mvccpb"
 	"go.etcd.io/etcd/client/v3"
 )
 

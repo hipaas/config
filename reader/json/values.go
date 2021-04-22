@@ -76,6 +76,8 @@ func (j *jsonValues) Scan(v interface{}) error {
 	if err != nil {
 		return err
 	}
+	defer fmt.Printf("json Scan b %s\n", b)
+	defer fmt.Printf("json Scan v %#v\n", v)
 	return json.Unmarshal(b, v)
 }
 
