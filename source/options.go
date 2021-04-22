@@ -3,7 +3,6 @@ package source
 import (
 	"context"
 
-	"github.com/hipaas/client"
 	"github.com/hipaas/config/encoder"
 	"github.com/hipaas/config/encoder/json"
 )
@@ -16,7 +15,7 @@ type Options struct {
 	Context context.Context
 
 	// Client to use for RPC
-	Client client.Client
+	//Client client.Client
 }
 
 type Option func(o *Options)
@@ -42,8 +41,8 @@ func WithEncoder(e encoder.Encoder) Option {
 }
 
 // WithClient sets the source client
-func WithClient(c client.Client) Option {
-	return func(o *Options) {
-		o.Client = c
-	}
-}
+//func WithClient(c client.Client) Option {
+//	return func(o *Options) {
+//		o.Client = c
+//	}
+//}
