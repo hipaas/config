@@ -50,7 +50,7 @@ func (c *etcd) Read() (*source.ChangeSet, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error reading source: %v", err)
 	}
-	fmt.Printf("data %s\n", b)
+	//fmt.Printf("data %s\n", b)
 
 	cs := &source.ChangeSet{
 		Timestamp: time.Now(),
